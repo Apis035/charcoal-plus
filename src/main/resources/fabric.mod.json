@@ -13,7 +13,7 @@
     "sources": "https://github.com/Apis035/charcoal-plus"
   },
 
-  "license": "CC0-1.0",
+  "license": "MIT",
   "icon": "assets/charcoalplus/icon.png",
 
   "environment": "*",
@@ -22,16 +22,11 @@
       "net.apis035.charcoalplus.CharcoalPlus"
     ]
   },
-  "mixins": [
-  ],
 
   "depends": {
     "fabricloader": ">=0.11.3",
     "fabric": "*",
     "minecraft": "1.18.x",
     "java": ">=17"
-  },
-  "suggests": {
-    "another-mod": "*"
   }
 }
