@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "charcoalplus:charcoal_piece"
+    }
+  },
+  "result": {
+    "item": "minecraft:charcoal"
+  }
+}
