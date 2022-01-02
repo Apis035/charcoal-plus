@@ -1,15 +1,31 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "###",
-    "###",
-    "###"
-  ],
-  "key": {
-    "#": {
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "charcoalplus:coal_piece"
+    },
+    {
+      "item": "charcoalplus:coal_piece"
+    },
+    {
+      "item": "charcoalplus:coal_piece"
+    },
+    {
+      "item": "charcoalplus:coal_piece"
+    },
+    {
+      "item": "charcoalplus:coal_piece"
+    },
+    {
+      "item": "charcoalplus:coal_piece"
+    },
+    {
+      "item": "charcoalplus:coal_piece"
+    },
+    {
       "item": "charcoalplus:coal_piece"
     }
-  },
+  ],
   "result": {
     "item": "minecraft:coal"
   }
