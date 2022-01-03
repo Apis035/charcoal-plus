@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "minecraft:stick"
+  },
+  "result": "charcoalplus:charcoal_piece",
+  "experience": 0.05,
+  "cookingtime": 25
+}
