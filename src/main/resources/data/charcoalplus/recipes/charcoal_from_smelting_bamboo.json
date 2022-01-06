@@ -4,6 +4,6 @@
     "item": "minecraft:bamboo"
   },
   "result": "charcoalplus:charcoal_piece",
-  "experience": 0.025,
-  "cookingtime": 200
+  "experience": 0.1,
+  "cookingtime": 150
 }
