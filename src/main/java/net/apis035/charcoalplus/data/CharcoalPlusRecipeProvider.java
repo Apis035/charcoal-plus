@@ -4,23 +4,24 @@ import net.apis035.charcoalplus.CharcoalPlus;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.advancement.criterion.InventoryChangedCriterion;
-import net.minecraft.data.server.recipe.RecipeJsonProvider;
+import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.book.RecipeCategory;
+import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.Identifier;
 
 import java.util.Collections;
-import java.util.function.Consumer;
+import java.util.concurrent.CompletableFuture;
 
 public class CharcoalPlusRecipeProvider extends FabricRecipeProvider {
-    public CharcoalPlusRecipeProvider(FabricDataOutput output) {
-        super(output);
+    public CharcoalPlusRecipeProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
+        super(output, registriesFuture);
     }
 
     @Override
-    public void generate(Consumer<RecipeJsonProvider> exporter) {
+    public void generate(RecipeExporter exporter) {
         /*
          * Compacting recipes
          */
@@ -73,6 +74,6 @@ public class CharcoalPlusRecipeProvider extends FabricRecipeProvider {
 
     @Override
     protected Identifier getRecipeIdentifier(Identifier identifier) {
-        return Identifier.of(CharcoalPlus.MOD_ID, identifier.getPath());
+        return Identifier.tryParse(CharcoalPlus.MOD_ID, identifier.getPath());
     }
 }
