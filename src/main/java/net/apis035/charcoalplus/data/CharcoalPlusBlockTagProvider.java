@@ -5,9 +5,11 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
+import org.jspecify.annotations.NullMarked;
 
 import java.util.concurrent.CompletableFuture;
 
+@NullMarked
 public class CharcoalPlusBlockTagProvider extends FabricTagProvider.BlockTagProvider {
     public CharcoalPlusBlockTagProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
         super(output, registriesFuture);
@@ -16,7 +18,12 @@ public class CharcoalPlusBlockTagProvider extends FabricTagProvider.BlockTagProv
     @Override
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
         // basic block tags
-        this.getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
+        valueLookupBuilder(BlockTags.PICKAXE_MINEABLE)
                 .add(CharcoalPlus.CHARCOAL_BLOCK);
+    }
+
+    @Override
+    public String getName() {
+        return "Charcoal+ Block Tags";
     }
 }

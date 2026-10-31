@@ -2,7 +2,9 @@ package net.apis035.charcoalplus.data;
 
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
+import org.jspecify.annotations.NullMarked;
 
+@NullMarked
 public class CharcoalPlusDatagen implements DataGeneratorEntrypoint {
     @Override
     public void onInitializeDataGenerator(FabricDataGenerator dataGenerator) {
@@ -10,6 +12,7 @@ public class CharcoalPlusDatagen implements DataGeneratorEntrypoint {
 
         pack.addProvider(CharcoalPlusBlockLootTableProvider::new);
         pack.addProvider(CharcoalPlusBlockTagProvider::new);
+        pack.addProvider(CharcoalPlusModelProvider::new);
         pack.addProvider(CharcoalPlusRecipeProvider::new);
     }
 }
