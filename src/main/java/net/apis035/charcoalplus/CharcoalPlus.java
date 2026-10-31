@@ -1,10 +1,9 @@
 package net.apis035.charcoalplus;
 
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
-import net.fabricmc.fabric.api.registry.FuelRegistryEvents;
-import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.fabricmc.fabric.api.registry.FuelValueEvents;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.item.BlockItem;
@@ -16,6 +15,7 @@ import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 
 public class CharcoalPlus implements ModInitializer {
 	public static final String MOD_ID = "charcoalplus";
@@ -26,26 +26,26 @@ public class CharcoalPlus implements ModInitializer {
 
 	public static final Item COAL_PIECE = Registry.register(BuiltInRegistries.ITEM, COAL_PIECE_ID, new Item(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, COAL_PIECE_ID))));
 	public static final Item CHARCOAL_PIECE = Registry.register(BuiltInRegistries.ITEM, CHARCOAL_PIECE_ID, new Item(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, CHARCOAL_PIECE_ID))));
-	public static final Block CHARCOAL_BLOCK = Registry.register(BuiltInRegistries.BLOCK, CHARCOAL_BLOCK_ID, new Block(net.minecraft.world.level.block.state.BlockBehaviour.Properties.ofFullCopy(Blocks.COAL_BLOCK).setId(ResourceKey.create(Registries.BLOCK, CHARCOAL_BLOCK_ID))));
+	public static final Block CHARCOAL_BLOCK = Registry.register(BuiltInRegistries.BLOCK, CHARCOAL_BLOCK_ID, new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.COAL_BLOCK).setId(ResourceKey.create(Registries.BLOCK, CHARCOAL_BLOCK_ID))));
 	public static final BlockItem CHARCOAL_BLOCK_ITEM = Registry.register(BuiltInRegistries.ITEM, CHARCOAL_BLOCK_ID, new BlockItem(CHARCOAL_BLOCK, new Item.Properties().setId(ResourceKey.create(Registries.ITEM, CHARCOAL_BLOCK_ID)).useBlockDescriptionPrefix()));
 
 	@Override
 	public void onInitialize() {
-		ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.BUILDING_BLOCKS).register((content) -> {
-			content.addAfter(Items.COAL_BLOCK, CHARCOAL_BLOCK_ITEM);
+		CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.BUILDING_BLOCKS).register((content) -> {
+			content.insertAfter(Items.COAL_BLOCK, CHARCOAL_BLOCK_ITEM);
 		});
 
-		ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.INGREDIENTS).register((content) -> {
-			content.addAfter(Items.CHARCOAL, COAL_PIECE, CHARCOAL_PIECE);
+		CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.INGREDIENTS).register((content) -> {
+			content.insertAfter(Items.CHARCOAL, COAL_PIECE, CHARCOAL_PIECE);
 		});
 
 		FlammableBlockRegistry flammableRegistry = FlammableBlockRegistry.getDefaultInstance();
 		flammableRegistry.add(CHARCOAL_BLOCK, 5, 5);
 
-		FuelRegistryEvents.BUILD.register((builder, context) -> {
+		FuelValueEvents.BUILD.register((builder, context) -> {
 			builder.add(CHARCOAL_BLOCK, 16000);
 			builder.add(CHARCOAL_PIECE, 200);
 			builder.add(COAL_PIECE, 200);
 		});
-		}
+	}
 }

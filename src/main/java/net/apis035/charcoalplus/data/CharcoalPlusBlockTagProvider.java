@@ -1,8 +1,8 @@
 package net.apis035.charcoalplus.data;
 
 import net.apis035.charcoalplus.CharcoalPlus;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.tags.BlockTags;
 import org.jspecify.annotations.NullMarked;
@@ -10,8 +10,8 @@ import org.jspecify.annotations.NullMarked;
 import java.util.concurrent.CompletableFuture;
 
 @NullMarked
-public class CharcoalPlusBlockTagProvider extends FabricTagProvider.BlockTagProvider {
-    public CharcoalPlusBlockTagProvider(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
+public class CharcoalPlusBlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
+    public CharcoalPlusBlockTagProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
         super(output, registriesFuture);
     }
 

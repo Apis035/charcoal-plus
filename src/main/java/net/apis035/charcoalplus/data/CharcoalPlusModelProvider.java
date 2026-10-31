@@ -2,7 +2,7 @@ package net.apis035.charcoalplus.data;
 
 import net.apis035.charcoalplus.CharcoalPlus;
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.model.ModelTemplates;
@@ -10,7 +10,7 @@ import org.jspecify.annotations.NullMarked;
 
 @NullMarked
 public class CharcoalPlusModelProvider extends FabricModelProvider {
-    public CharcoalPlusModelProvider(FabricDataOutput output) {
+    public CharcoalPlusModelProvider(FabricPackOutput output) {
         super(output);
     }
 
