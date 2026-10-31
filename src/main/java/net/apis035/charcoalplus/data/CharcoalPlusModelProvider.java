@@ -3,9 +3,9 @@ package net.apis035.charcoalplus.data;
 import net.apis035.charcoalplus.CharcoalPlus;
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
-import net.minecraft.client.data.BlockStateModelGenerator;
-import net.minecraft.client.data.ItemModelGenerator;
-import net.minecraft.client.data.Models;
+import net.minecraft.client.data.models.BlockModelGenerators;
+import net.minecraft.client.data.models.ItemModelGenerators;
+import net.minecraft.client.data.models.model.ModelTemplates;
 import org.jspecify.annotations.NullMarked;
 
 @NullMarked
@@ -15,15 +15,15 @@ public class CharcoalPlusModelProvider extends FabricModelProvider {
     }
 
     @Override
-    public void generateBlockStateModels(BlockStateModelGenerator generator) {
-        generator.registerSimpleCubeAll(CharcoalPlus.CHARCOAL_BLOCK);
+    public void generateBlockStateModels(BlockModelGenerators generator) {
+        generator.createTrivialCube(CharcoalPlus.CHARCOAL_BLOCK);
     }
 
 
     @Override
-    public void generateItemModels(ItemModelGenerator generator) {
-        generator.register(CharcoalPlus.COAL_PIECE, Models.GENERATED);
-        generator.register(CharcoalPlus.CHARCOAL_PIECE, Models.GENERATED);
+    public void generateItemModels(ItemModelGenerators generator) {
+        generator.generateFlatItem(CharcoalPlus.COAL_PIECE, ModelTemplates.FLAT_ITEM);
+        generator.generateFlatItem(CharcoalPlus.CHARCOAL_PIECE, ModelTemplates.FLAT_ITEM);
     }
 
     @Override
